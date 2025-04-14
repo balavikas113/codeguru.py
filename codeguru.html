@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Code Guru AI</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="codeguru.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🔍 Code Guru AI</h1>
+            <p>Get detailed code analysis with actionable improvement suggestions powered by AI.</p>
+        </div>
+        
+        <div class="code-guru-card">
+            <div class="code-input-section">
+                <div class="section-title">Code Snippet</div>
+                <textarea id="code-input" placeholder="Paste your code here..."></textarea>
+            </div>
+            
+            <button id="analyze-btn" class="analyze-btn">Analyze Code</button>
+            
+            <div class="loading" id="loading">
+                <div class="loading-spinner"></div>
+                <p>Analyzing your code...</p>
+            </div>
+            
+            <div class="code-output-section">
+                <div class="section-title">Code Analysis</div>
+                <textarea id="code-output" readonly></textarea>
+            </div>
+        </div>
+        
+        <div class="examples-section">
+            <div class="section-title">Example Code Snippets</div>
+            <div class="example-card" id="example1">
+                <div class="example-title">Recursive Factorial Function</div>
+                <div class="example-preview">def factorial(n):
+    if n == 0:
+        return 1
+    else:
+        return n * factorial(n-1)</div>
+            </div>
+            
+            <div class="example-card" id="example2">
+                <div class="example-title">Calculate Average Function</div>
+                <div class="example-preview">def calculate_average(numbers):
+    return sum(numbers)/len(numbers)</div>
+            </div>
+            
+            <div class="example-card" id="example3">
+                <div class="example-title">Simple For Loop</div>
+                <div class="example-preview">for i in range(10):
+    print(i**2)</div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>Code Guru AI © 2023 | Powered by Google Gemini</p>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('analyze-btn').addEventListener('click', function() {
+            const codeInput = document.getElementById('code-input').value;
+            if (codeInput.trim() === '') {
+                alert('Please enter some code to analyze.');
+                return;
+            }
+            
+            // Show loading indicator
+            document.getElementById('loading').style.display = 'block';
+            
+            // Call the Gradio function
+            submit_code(codeInput);
+        });
+        
+        // Example click handlers
+        document.getElementById('example1').addEventListener('click', function() {
+            document.getElementById('code-input').value = 'def factorial(n):\n    if n == 0:\n        return 1\n    else:\n        return n * factorial(n-1)';
+        });
+        
+        document.getElementById('example2').addEventListener('click', function() {
+            document.getElementById('code-input').value = 'def calculate_average(numbers):\n    return sum(numbers)/len(numbers)';
+        });
+        
+        document.getElementById('example3').addEventListener('click', function() {
+            document.getElementById('code-input').value = 'for i in range(10):\n    print(i**2)';
+        });
+        
+        // Function to be replaced by Gradio
+        function submit_code(code) {
+            // This will be replaced by Gradio's machinery
+        }
+        
+        // Function to update the output (called by Gradio)
+        function update_output(result) {
+            document.getElementById('code-output').value = result;
+            document.getElementById('loading').style.display = 'none';
+        }
+    </script>
+</body>
+</html>
